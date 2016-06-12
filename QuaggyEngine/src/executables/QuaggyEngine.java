@@ -1,6 +1,8 @@
 package executables;
 
+import io.API;
 import io.DB;
+import io.SpidyAPI;
 import quaggy.FeatureStore;
 import quaggy.ItemDB;
 import quaggy.TPSnapshot;
@@ -25,13 +27,15 @@ public class QuaggyEngine {
 		
 		//Get the current state
 		DB db = new DB();
+		API api = new SpidyAPI();
 		items = db.getItemDB(true);
 		features = new FeatureStore();
 		
 		//Continuously update
 		while (true) {
 			try {
-				TPSnapshot snapshot = DBUpdate.update();
+				TPSnapshot snapshot = api.snapshot();
+				db.saveTPSnapshot(snapshot);
 				features.load(items, snapshot);
 				items.addCurrentState(snapshot);
 				
