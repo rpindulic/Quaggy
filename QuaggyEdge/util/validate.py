@@ -1,5 +1,4 @@
 from util.apiexceptions import ValidationError, BadParameter, BadValue
-from util.validKeys import TYPES
 
 from collections import Iterable, Mapping
 

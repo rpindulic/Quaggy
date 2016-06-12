@@ -1,5 +1,4 @@
 from util.validate import Validator
-from util.validKeys import TYPES
 from util.validate import ValidatorFactory as Factory
 from util.apiexceptions import BadType
 

@@ -1,5 +1,4 @@
 from util import validate
-from util.validKeys import TYPES
 from util.validate import ValidatorFactory
 from util.apiexceptions import ValidationError
 
