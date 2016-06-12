@@ -23,7 +23,8 @@ QuaggyEngine (backend):
 
  * Download and install the Java 8 JDK, gradle and eclipse with the gradle plugin.
  * Create a new eclipse project in the directory QuaggyEngine.
- * Navigate to the QuaggyEngine eclipse folder and run 'gradle clean build' followed by 'gradle eclipse'.
+ * Navigate to the QuaggyEngine eclipse folder and run 'gradle clean build' 
+   followed by 'gradle eclipse'.
 
 Backing MySQL store:
  * Download and install a MySQL server, running on localhost port 3306.
@@ -32,7 +33,6 @@ Backing MySQL store:
  * Run DBInit.java in QuaggyEngine to initialize your database.
  * Run DBHistorySync.java in QuaggyEngine to pull all history into the database. 
    (This will take a tremendous amount of time).
- * 
 
 QuaggyEdge (edge servers):
  
@@ -55,7 +55,8 @@ To run the project:
  * Run the backend. You can run the Java file executables/QuaggyEngine.java in eclipse.
  * Wait some time for QuaggyEngine to populate the frontend cache with initial values 
    (this is currently a bit slow).
- * In QuaggyEdge, you can run the tests in tests/custom_tests and verify that the output looks good.
+ * In QuaggyEdge, you can run the tests in tests/custom_tests and verify that 
+   the output looks good.
 
 DESIGN
 ------------
@@ -133,8 +134,9 @@ TODO AND FUTURE PLANS
 This is a work in progress. Some high-priority goals are listed below:
 
  * The feature vector computations are too slow. Presently each feature is computed independently 
-   for each history day value, but this may not be necessary. Many features (for instance, mean sell price)
-   do not need to be computed independently (i.e. starting from scratch to compute mean sell price over
+   for each history day value, but this may not be necessary. Many features 
+   (for instance, mean sell price) do not need to be computed independently 
+   (i.e. starting from scratch to compute mean sell price over
    10 days after just computing it over 9 days is a waste of resources)
  
  * Feature vector computations can be computed in parallel, possibly over multiple 
@@ -148,7 +150,8 @@ This is a work in progress. Some high-priority goals are listed below:
 
  * Change the communication between backend and edge servers to be something other than a standard 
    API endpoint. This must be secure so that the edge will only accept data from legitimate 
-   backend servers. Also, update backend's RESTClient.java to no longer use deprecated Http classes.
+   backend servers. Also, update backend's RESTClient.java to no longer use deprecated 
+   Http classes.
 
  * Replace current tests with unit tests for endpoints.
 
@@ -161,9 +164,10 @@ Some more longer-term goals are listed below:
  * Use entire history and machine learning to attempt to predict best filters for different 
    types of success.
 
- * Incorporate current GW2 news from official site, forums, and subreddit as features to attempt to 
-   predict market trends
+ * Incorporate current GW2 news from official site, forums, and subreddit as features to attempt
+   to predict market trends
 
  * Support for APIs other than SpidyAPI, which has become largely unsupported.
 
- * Support for users to manage the items they have purchased, and possibly recommend when and how to sell.
+ * Support for users to manage the items they have purchased, and possibly recommend 
+   when and how to sell.
