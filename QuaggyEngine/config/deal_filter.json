@@ -1,0 +1,37 @@
+{
+	"HistoryDays": 5,
+	"BuyMode": "Instant",
+	"SellMode": "Bid",
+	"SortBy": "MeanProfit",
+	"SortOrder": "Desc",
+	"Types": 
+	[
+		"CraftingMaterial",
+		"Bag",
+		"Mini",
+		"Gizmo"
+	],
+
+	"Bounds": 
+	{
+		"MeanProfit": 
+		{
+			"Min": 0.15
+		},
+		
+		"OurBuyPrice":
+		{
+			"Min": 70
+		},
+
+		"NumBuyOrders": 
+		{
+			"Min": 3000
+		},
+
+		"NumSellOrders": 
+		{
+			"Min": 3000
+		}
+	}
+}

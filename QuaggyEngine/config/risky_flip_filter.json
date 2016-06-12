@@ -1,0 +1,37 @@
+{
+	"HistoryDays": 1,
+	"BuyMode": "Bid",
+	"SellMode": "Bid",
+	"SortBy": "CurrentFlipProfit",
+	"SortOrder": "Desc",
+	"Types": 
+	[
+		"CraftingMaterial",
+		"Bag",
+		"Mini",
+		"Gizmo"
+	],
+
+	"Bounds": 
+	{
+		"CurrentFlipProfit": 
+		{
+			"Min": 0.2
+		},
+
+		"NumBuyOrders": 
+		{
+			"Min": 500
+		},
+
+		"NumSellOrders": 
+		{
+			"Min": 500
+		},
+
+		"OurBuyPrice": 
+		{
+			"Max": 20000
+		}
+	}
+}
