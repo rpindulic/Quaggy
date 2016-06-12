@@ -40,15 +40,20 @@ public abstract class API {
 	 *  If fresh is set to true, the DB will be wiped before the sync,
 	 *  otherwise we will simply add the data on top of the old DB.
 	 *  
+	 *  historyHorizon sets the number of days back in time we want to pull
+	 *  from the API into the database. Use Integer.MAX_VALUE to pull
+	 *  all of history.
+	 *  Throws IllegalArgumentException if historyHorizon is negative.
+	 *  
 	 *  This will load all items with IDs greater than or equal to start.
 	 *  The start parameter is useful for starting your sync where you 
 	 *  may have left off in case you must stop prematurely.
 	 */
-	public abstract void resyncHistory(DB database, boolean fresh, int start);
+	public abstract void resyncHistory(DB database, boolean fresh, int historyHorizon, int start);
 
 	/** Same as resyncHistory above but will start at 0 by default. */
-	public void resyncHistory(DB database, boolean fresh) {
-		resyncHistory(database, fresh, 0);
+	public void resyncHistory(DB database, boolean fresh, int historyHorizon) {
+		resyncHistory(database, fresh, historyHorizon, 0);
 	}
 	
 	/** Given a number and a total, format a String

@@ -8,6 +8,7 @@ import java.util.Map;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import core.DateTime;
 import core.ItemDB;
 import core.ItemInfo;
 import core.TPItemInfo;
@@ -108,7 +109,8 @@ public class SpidyAPI extends API {
 	}
 
 	@Override
-	public void resyncHistory(DB database, boolean fresh, int start) {
+	public void resyncHistory(DB database, boolean fresh, int start, int historyHorizon) {
+		DateTime firstDate = DateTime.daysBack(historyHorizon);
 		//Completely refresh the table if we want it to be fresh
 		if (fresh) {
 			database.dropListingsTable();
@@ -135,9 +137,11 @@ public class SpidyAPI extends API {
 			//Don't bother wasting DB space if this isn't tradeable
 			int historySize = augmented.getHistory().size();
 			if (historySize == 0) continue;
-			//Add the history to the DB
+			//Add the history to the DB only if necessary.
 			for (TPItemInfo historical : augmented.getHistory()) {
-				database.addListing(historical);
+				if (historical.time().compareTo(firstDate) >= 0) {
+					database.addListing(historical);
+				}
 			}
 		}
 		System.out.println("Spidy DB History Sync Complete.");
