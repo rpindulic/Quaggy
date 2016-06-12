@@ -22,7 +22,7 @@ After cloning the repo, follow the following instructions.
 QuaggyEngine (backend):
 
  * Download and install the Java 8 JDK, gradle and eclipse with the gradle plugin.
- * Import the QuaggyEngine folder as an eclipse project.
+ * Create a new eclipse project in the directory QuaggyEngine.
  * Navigate to the QuaggyEngine eclipse folder and run 'gradle clean build' followed by 'gradle eclipse'.
 
 QuaggyEdge (edge servers):
