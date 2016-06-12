@@ -109,7 +109,7 @@ public class SpidyAPI extends API {
 	}
 
 	@Override
-	public void resyncHistory(DB database, boolean fresh, int start, int historyHorizon) {
+	public void resyncHistory(DB database, boolean fresh, int historyHorizon, int start) {
 		DateTime firstDate = DateTime.daysBack(historyHorizon);
 		//Completely refresh the table if we want it to be fresh
 		if (fresh) {
