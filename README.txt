@@ -29,15 +29,18 @@ QuaggyEdge (edge servers):
  
  * Download and install python 2.7 and virtualenv.
  * Navigate to QuaggyEdge folder and run 'virtualenv venv' to create a virtual environment.
- * Activate the virtual environment by running '. venv/bin/activate' (Linux) or 'venv\Scripts\activate' (Windows)
+ * Activate the virtual environment by running '. venv/bin/activate' (Linux) 
+   or 'venv\Scripts\activate' (Windows)
  * Run 'pip install -r requirements.txt' to update your virtual environment.
 
 To run the project:
 
  * Follow both sets of build instructions above.
- * Begin by running the edge server. In the python virtualenv, navigate to QuaggyEdge and run 'python app.py'
+ * Begin by running the edge server. In the python virtualenv, navigate to QuaggyEdge and run 
+   'python app.py'
  * Run the backend. You can run the Java file executables/QuaggyEngine.java in eclipse.
- * Wait some time for QuaggyEngine to populate the frontend cache with initial values (this is currently a bit slow).
+ * Wait some time for QuaggyEngine to populate the frontend cache with initial values 
+   (this is currently a bit slow).
  * In QuaggyEdge, you can run the tests in tests/custom_tests and verify that the output looks good.
 
 DESIGN
@@ -120,14 +123,16 @@ This is a work in progress. Some short-term goals are listed below:
    do not need to be computed independently (i.e. starting from scratch to compute mean sell price over
    10 days after just computing it over 9 days is a waste of resources)
  
- * Feature vector computations can be computed in parallel, possibly over multiple backend servers to increase speed.
+ * Feature vector computations can be computed in parallel, possibly over multiple 
+   backend servers to increase speed.
 
- * Currently, updated feature vector information is sent to all edge servers for every full item that is completed.
-   Investigate possibly sending this updated data more or less frequently and examine the effects on performance.
+ * Currently, updated feature vector information is sent to all edge servers for every full item 
+   that is completed. Investigate possibly sending this updated data more or less frequently and 
+   examine the effects on performance.
 
- * Change the communication between backend and edge servers to be something other than a standard API endpoint.
-   This must be secure so that the edge will only accept data from legitimate backend servers.
-   Also, update backend's RESTClient.java to no longer use deprecated Http classes.
+ * Change the communication between backend and edge servers to be something other than a standard 
+   API endpoint. This must be secure so that the edge will only accept data from legitimate 
+   backend servers. Also, update backend's RESTClient.java to no longer use deprecated Http classes.
 
  * Replace current tests with unit tests for endpoints.
 
@@ -139,7 +144,8 @@ Some more longer-term goals are listed below:
 
  * Use entire history and machine learning to attempt to predict best filters for different types of success.
 
- * Incorporate current GW2 news from official site, forums, and subreddit as features to attempt to predict market trends
+ * Incorporate current GW2 news from official site, forums, and subreddit as features to attempt to 
+   predict market trends
 
  * Support for APIs other than SpidyAPI, which has become largely unsupported.
 
