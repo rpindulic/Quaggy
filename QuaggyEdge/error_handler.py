@@ -10,15 +10,15 @@ by the framework
 http_errors = {
     404: {
         'message': 'The resource you requested does not exist',
-        'more_info': 'http://cloudchef.com/api/docs/endpoints'
+        'more_info': 'http://quaggy.com/api/docs/endpoints'
     },
     405: {
         'message': 'The resource you requested does not allow that method',
-        'more_info': 'http://cloudchef.com/api/docs/endpoints'
+        'more_info': 'http://quaggy.com/api/docs/endpoints'
     },
     500: {
         'message': 'Something went wrong. Send us a bug report so this doesn\'t happen again!',
-        'more_info': 'mailto:bugs@dev.cloudchef.com'
+        'more_info': 'mailto:bugs@dev.quaggy.com'
     }
 }
 
