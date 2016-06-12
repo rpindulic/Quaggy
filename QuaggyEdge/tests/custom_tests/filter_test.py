@@ -29,14 +29,15 @@ data = {'deal_filter':
     "CraftingMaterial",
     "Bag",
     "Mini",
-    "Gizmo"
+    "Gizmo",
+    "Consumable"
   ],
 
   "Bounds": 
   {
     "MeanProfit": 
     {
-      "Min": 0.05
+      "Min": 0.00
     },
     
     "OurBuyPrice":
