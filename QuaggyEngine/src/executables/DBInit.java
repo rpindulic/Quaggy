@@ -1,9 +1,9 @@
 package executables;
 
+import core.ItemDB;
 import io.API;
 import io.DB;
 import io.SpidyAPI;
-import quaggy.ItemDB;
 
 /** Initializes the server database, without history. */
 public class DBInit {

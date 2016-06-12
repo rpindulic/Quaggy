@@ -1,4 +1,4 @@
-package quaggy;
+package core;
 
 /** Enum for representing the different types of items
  *  in the game. Names must match up exactly with the API

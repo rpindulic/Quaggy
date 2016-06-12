@@ -11,10 +11,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
-import quaggy.ItemDB;
-import quaggy.ItemInfo;
-import quaggy.TPItemInfo;
-import quaggy.TPSnapshot;
+import core.ItemDB;
+import core.ItemInfo;
+import core.TPItemInfo;
+import core.TPSnapshot;
 
 
 /** Acts as an interface into the MySQL DB used to store long-term information.

@@ -1,11 +1,11 @@
 package executables;
 
+import core.FeatureStore;
+import core.ItemDB;
+import core.TPSnapshot;
 import io.API;
 import io.DB;
 import io.SpidyAPI;
-import quaggy.FeatureStore;
-import quaggy.ItemDB;
-import quaggy.TPSnapshot;
 
 /** Repeatedly calls DPUpdate to fetch and store a new
  *  snapshot of the TP, then forwards updated feature

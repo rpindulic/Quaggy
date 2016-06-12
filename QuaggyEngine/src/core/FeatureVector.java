@@ -1,4 +1,4 @@
-package quaggy;
+package core;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package quaggy;
+package core;
 
 /** Interface which allows lambda: double -> double
  *  functions.

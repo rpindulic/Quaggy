@@ -13,13 +13,13 @@ import java.util.Set;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import core.FeatureVector;
+import core.ItemDB;
+import core.ItemType;
+import core.TPSnapshot;
+import core.FeatureVector.Feature;
+import core.FeatureVector.Mode;
 import io.JSONInterface;
-import quaggy.FeatureVector;
-import quaggy.ItemDB;
-import quaggy.ItemType;
-import quaggy.TPSnapshot;
-import quaggy.FeatureVector.Feature;
-import quaggy.FeatureVector.Mode;
 
 /** Creates an object which can parse a JSON
  *  filter files and store the resulting 

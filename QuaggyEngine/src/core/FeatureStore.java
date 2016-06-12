@@ -1,10 +1,10 @@
-package quaggy;
+package core;
 
 import java.util.HashMap;
 import java.util.Map;
 
+import core.FeatureVector.Mode;
 import io.RESTClient;
-import quaggy.FeatureVector.Mode;
 
 /** Stores the most recent set of feature vectors that we've 
  *  parsed. Can also forward to T1 servers when received.

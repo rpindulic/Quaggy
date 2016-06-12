@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import quaggy.DateTime;
+import core.DateTime;
 
 public class DateTimeTester {
 

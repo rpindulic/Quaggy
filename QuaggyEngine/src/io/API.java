@@ -2,8 +2,8 @@ package io;
 
 import java.text.DecimalFormat;
 
-import quaggy.ItemDB;
-import quaggy.TPSnapshot;
+import core.ItemDB;
+import core.TPSnapshot;
 
 /** Abstract class defining the interface to be used for any API
  * we wish to incorporate into our code. 

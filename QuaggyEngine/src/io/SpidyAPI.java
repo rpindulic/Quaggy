@@ -8,10 +8,10 @@ import java.util.Map;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import quaggy.ItemDB;
-import quaggy.ItemInfo;
-import quaggy.TPItemInfo;
-import quaggy.TPSnapshot;
+import core.ItemDB;
+import core.ItemInfo;
+import core.TPItemInfo;
+import core.TPSnapshot;
 
 /** Implementation of the API interface using the GW2
     Spidy API. Might be useful to replace soon given that

@@ -2,10 +2,10 @@ package tests;
 
 import java.util.List;
 
+import core.FeatureVector;
 import io.API;
 import io.DB;
 import io.SpidyAPI;
-import quaggy.FeatureVector;
 
 /** Executable which makes predictions on suggested items to
  *  buy, using parameters for how to determine what makes
