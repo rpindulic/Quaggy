@@ -11,10 +11,10 @@ url = BASEURL + "/api/filters"
 # Signup
 print "\n Signing up as test user"
 data = {
-    'username': 'test',
+    'username': 'test_3',
     'password': 'test_pw'
 }
-print s.post(BASEURL + '/api/login', json=data).json()
+print s.post(BASEURL + '/api/signup', json=data).json()
 
 print "\n Trying to add a filter"
 data = {'deal_filter': 
@@ -36,12 +36,12 @@ data = {'deal_filter':
   {
     "MeanProfit": 
     {
-      "Min": 0.1
+      "Min": 0.05
     },
     
     "OurBuyPrice":
     {
-      "Min": 70
+      "Min": 25
     },
 
     "NumBuyOrders": 

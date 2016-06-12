@@ -14,7 +14,7 @@ c.setopt(c.HTTPHEADER, ['Content-type: application/json'])  # To pass JSON form 
 print "\n Signing up as test user"
 c.setopt(c.URL, BASEURL + "/api/signup")
 c.setopt(c.POSTFIELDS, json.dumps({
-    'username': 'test',
+    'username': 'test_1',
     'password': 'test_pw'
     }))
 c.perform()
