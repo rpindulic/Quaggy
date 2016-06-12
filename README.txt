@@ -142,7 +142,8 @@ This is a work in progress. Some short-term goals are listed below:
 
 Some more longer-term goals are listed below:
 
- * Use entire history and machine learning to attempt to predict best filters for different types of success.
+ * Use entire history and machine learning to attempt to predict best filters for different 
+   types of success.
 
  * Incorporate current GW2 news from official site, forums, and subreddit as features to attempt to 
    predict market trends
