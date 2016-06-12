@@ -17,6 +17,9 @@ public class FeatureStore {
 	 *  for each of an allowed set of days. */
 	private static final int[] HISTORY = {1,2,3,4,5,6,7,8,9,10,15,20,25,30};
 	
+	/** The edge server endpoint to send our digest to. */
+	private static final String endpoint = "http://localhost:80/backend/digest";
+	
 	/** Create a new, empty, feature store. */
 	public FeatureStore() {
 	}
@@ -70,7 +73,7 @@ public class FeatureStore {
 			}
 			// Broadcast our digest.
 			System.out.println("Broadcasting: " + id);
-			broadcastDigest(digest, "http://localhost:5000/backend/digest");
+			broadcastDigest(digest, endpoint);
 		}
 	}
 }
