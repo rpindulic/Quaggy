@@ -25,6 +25,14 @@ QuaggyEngine (backend):
  * Create a new eclipse project in the directory QuaggyEngine.
  * Navigate to the QuaggyEngine eclipse folder and run 'gradle clean build' followed by 'gradle eclipse'.
 
+Backing MySQL store:
+ * Download and install a MySQL server, running on localhost port 3306.
+ * Create a database named quaggy with user root, password root. You can also use a different user
+   if you customize the settings in DB.java in QuaggyEngine.
+ * Run DBInit.java in QuaggyEngine to initialize your database.
+ * Run DBHistorySync.java in QuaggyEngine to pull all history into the database. 
+   (This will take a tremendous amount of time).
+
 QuaggyEdge (edge servers):
  
  * Download and install python 2.7 and virtualenv.
@@ -35,7 +43,7 @@ QuaggyEdge (edge servers):
 
 To run the project:
 
- * Follow both sets of build instructions above.
+ * Follow all three sets of build instructions above.
  * Begin by running the edge server. In the python virtualenv, navigate to QuaggyEdge and run 
    'python app.py'
  * Run the backend. You can run the Java file executables/QuaggyEngine.java in eclipse.
