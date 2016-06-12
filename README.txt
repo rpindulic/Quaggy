@@ -42,8 +42,9 @@ QuaggyEdge (edge servers):
    or 'venv\Scripts\activate' (Windows)
  * Run 'pip install -r requirements.txt' to update your virtual environment.
  * Download nginx and ensure that QuaggyEdge/balance/quaggy.conf is loaded by nginx. 
-   One way to do this is to look for the sites_enabled directory in the nginx
-   install folder and create a symbolic link to quaggy.conf there. 
+   One way to do this is to look for the sites-enabled directory in the nginx
+   install folder and create a symbolic link to quaggy.conf there.
+   On Linux this is typically in /etc/nginx/sites-enabled.
 
 To run the project:
 

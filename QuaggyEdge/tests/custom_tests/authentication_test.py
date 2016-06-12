@@ -2,7 +2,7 @@
 
 import pycurl, json, requests
 
-BASEURL = 'http://localhost:5000'
+BASEURL = 'http://localhost:80'
 
 print '\nStarting Tests @ {}...\n'.format(BASEURL)
 
@@ -41,7 +41,7 @@ c.perform()
 print "\n Logging back in again"
 c.setopt(c.URL, BASEURL + "/api/login")
 c.setopt(c.POSTFIELDS, json.dumps({
-    'username': 'test',
+    'username': 'test_1',
     'password': 'test_pw'
     }))
 c.perform()

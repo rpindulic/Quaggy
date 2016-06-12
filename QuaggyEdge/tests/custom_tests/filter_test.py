@@ -2,7 +2,7 @@
 
 import json, requests
 
-BASEURL = 'http://localhost:5000'
+BASEURL = 'http://localhost:80'
 
 print '\nStarting Tests @ {}...\n'.format(BASEURL)
 s = requests.session()
