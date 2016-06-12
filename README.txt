@@ -32,6 +32,7 @@ Backing MySQL store:
  * Run DBInit.java in QuaggyEngine to initialize your database.
  * Run DBHistorySync.java in QuaggyEngine to pull all history into the database. 
    (This will take a tremendous amount of time).
+ * 
 
 QuaggyEdge (edge servers):
  
@@ -121,10 +122,10 @@ Filters must be sent to the edge servers using a specific JSON format. An exampl
 }
 
 
-FUTURE WORK
+TODO AND FUTURE PLANS
 ------------
 
-This is a work in progress. Some short-term goals are listed below:
+This is a work in progress. Some high-priority goals are listed below:
 
  * The feature vector computations are too slow. Presently each feature is computed independently 
    for each history day value, but this may not be necessary. Many features (for instance, mean sell price)
@@ -133,6 +134,9 @@ This is a work in progress. Some short-term goals are listed below:
  
  * Feature vector computations can be computed in parallel, possibly over multiple 
    backend servers to increase speed.
+
+ * Modify QuaggyEngine so that only the most recent few months of data are stored in memory,
+   and history that is so old it is irrelevant is left on disk only.
 
  * Currently, updated feature vector information is sent to all edge servers for every full item 
    that is completed. Investigate possibly sending this updated data more or less frequently and 
