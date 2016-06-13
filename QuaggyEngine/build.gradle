@@ -1,9 +1,16 @@
 apply plugin: 'java'
+apply plugin: 'eclipse'
 archivesBaseName = 'Concretepage'
 version = '1.0-SNAPSHOT' 
 
-sourceSets.main.java.srcDirs = ['src']
-sourceSets.test.java.srcDirs = ['src']
+sourceSets {
+	main {
+		java {
+			srcDir 'src'
+			exclude 'tests/**'
+		}
+	}
+}
 
 repositories {
     mavenCentral()
