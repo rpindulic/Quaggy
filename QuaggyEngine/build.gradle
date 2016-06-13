@@ -26,4 +26,4 @@ dependencies {
 }
 
 apply plugin: 'application'
-mainClassName = 'executables.DBInit'
+mainClassName = 'executables.QuaggyEngine'
