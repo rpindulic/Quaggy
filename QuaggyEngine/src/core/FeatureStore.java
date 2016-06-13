@@ -18,7 +18,10 @@ public class FeatureStore {
 	private static final int[] HISTORY = {1,2,3,4,5,6,7,8,9,10,15,20,25,30};
 	
 	/** The edge server endpoint to send our digest to. */
-	private static final String endpoint = "http://localhost:80/backend/digest";
+	private static final String ENDPOINT = "http://localhost:80/backend/digest";
+	
+	/** The number of items we should bundle together per digest. */
+	private static final int ITEMS_PER_DIGEST = 30;
 	
 	/** Create a new, empty, feature store. */
 	public FeatureStore() {
@@ -51,9 +54,11 @@ public class FeatureStore {
 	 *  remove all old feature information.
 	 */
 	public void load(ItemDB items, TPSnapshot snapshot) {
+		// Maps from id:history_days:buy:sell:feature -> val.
+		Map<String, Double> digest = new HashMap<String, Double>();
+		// Number of items in this digest.
+		int digestSize = 0;
 		for (int id : items.validIDS()) {
-			// Maps from id:history_days:buy:sell:feature -> val.
-			Map<String, Double> digest = new HashMap<String, Double>();
 			// If there's no history or this isn't for sale, we can't predict anything.
 			if (items.getItemInfo(id).getHistory().size() == 0 || 
 					snapshot.get(id).get(TPItemInfo.Attribute.NumBuy) == 0) {
@@ -71,9 +76,12 @@ public class FeatureStore {
 					}
 				}
 			}
-			// Broadcast our digest.
-			System.out.println("Broadcasting: " + id);
-			broadcastDigest(digest, endpoint);
+			if (++digestSize >= ITEMS_PER_DIGEST) {
+				System.out.println("Broadcasting: " + id);
+				broadcastDigest(digest, ENDPOINT);
+				digestSize = 0;
+				digest.clear();
+			}
 		}
 	}
 }
