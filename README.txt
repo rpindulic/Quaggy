@@ -41,12 +41,17 @@ QuaggyEdge (edge servers):
  * Activate the virtual environment by running '. venv/bin/activate' (Linux) 
    or 'venv\Scripts\activate' (Windows)
  * Run 'pip install -r requirements.txt' to update your virtual environment.
+ * Download nginx and ensure that QuaggyEdge/balance/quaggy.conf is loaded by nginx. 
+   One way to do this is to look for the sites_enabled directory in the nginx
+   install folder and create a symbolic link to quaggy.conf there. 
 
 To run the project:
 
- * Follow all three sets of build instructions above.
- * Begin by running the edge server. In the python virtualenv, navigate to QuaggyEdge and run 
-   'python app.py'
+ * Follow all three sets of instructions above.
+ * Begin by running the edge server. First, run 'nginx' command. This should start nginx
+   in the background.
+ * In the python virtualenv, navigate to QuaggyEdge and run "gunicorn 'app:build_app()'
+   -b localhost:8000" to start the server.
  * Run the backend. You can run the Java file executables/QuaggyEngine.java in eclipse.
  * Wait some time for QuaggyEngine to populate the frontend cache with initial values 
    (this is currently a bit slow).
