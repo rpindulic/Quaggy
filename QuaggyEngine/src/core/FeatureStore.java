@@ -21,7 +21,7 @@ public class FeatureStore {
 	private static final String ENDPOINT = "http://localhost:80/backend/digest";
 	
 	/** The number of items we should bundle together per digest. */
-	private static final int ITEMS_PER_DIGEST = 30;
+	private static final int ITEMS_PER_DIGEST = 5;
 	
 	/** Create a new, empty, feature store. */
 	public FeatureStore() {
