@@ -24,6 +24,8 @@ public class QuaggyEngine {
 	private static final int MINUTES_WAIT = 1;
 	// The number of days of history to store in main memory.
 	private static final int HISTORY_HORIZON = 30;
+	// We should store the history 1 out of every X cycles
+	private static final int HISTORY_CYCLES = 5;
 	
 	public static void main(String[]args) {
 		
@@ -34,13 +36,17 @@ public class QuaggyEngine {
 		features = new FeatureStore();
 		
 		//Continuously update
+		int cycle = 0;
 		while (true) {
 			try {
 				TPSnapshot snapshot = api.snapshot();
-				db.saveTPSnapshot(snapshot);
 				features.load(items, snapshot);
-				items.addCurrentState(snapshot);
 				items.purge(HISTORY_HORIZON);
+				if (++cycle == HISTORY_CYCLES) {
+					cycle = 0;
+					items.addCurrentState(snapshot);
+					db.saveTPSnapshot(snapshot);
+				}
 				
 				System.out.println();
 				System.out.println("Database updated");
