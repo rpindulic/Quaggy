@@ -19,8 +19,7 @@ public class ItemDB {
 	
 	/** Initialize an empty item database. */
 	public ItemDB() {
-		db = new HashMap<Integer, ItemInfo>();
-		validItemIDs = new ArrayList<Integer>();
+		this(new HashMap<Integer, ItemInfo>());
 	}
 	
 	/** Initialize an ItemDB from a map from integers to item info. */
@@ -31,6 +30,18 @@ public class ItemDB {
 			validItemIDs.add(id);
 		}
 		Collections.sort(validItemIDs);
+	}
+	
+	/** Purges all history from more than horizon days ago from main memory.
+	 *  This data will not be removed from the backing MySQL store. 
+	 *  
+	 *  If horizon < 0, throws IllegalArgumentException.
+	 */
+	public void purge(int horizon) {
+		DateTime firstDate = DateTime.daysBack(horizon);
+		for (int id : validItemIDs) {
+			db.get(id).purge(firstDate);
+		}
 	}
 	
 	/** Adds the current snapshot to the ItemDB as the 

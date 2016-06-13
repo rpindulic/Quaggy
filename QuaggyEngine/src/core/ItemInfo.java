@@ -80,6 +80,18 @@ public class ItemInfo {
 		return id;
 	}
 	
+	/** Purges all history from earlier than the DateTime provided.
+	 *  This history will be removed from main memory, but will not
+	 *  be removed from the backing MySQL store.
+	 */
+	public void purge(DateTime firstDate) {
+		for (int i = 0; i < history.size(); i++) {
+			if (history.get(i).time().compareTo(firstDate) < 0) {
+				history.remove(i);
+				i--;
+			}
+		}
+	}
 	
 	/** Set the history to be what we want */
 	public void setHistory(List<TPItemInfo> history) {

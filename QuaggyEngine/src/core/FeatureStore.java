@@ -15,8 +15,7 @@ public class FeatureStore {
 	/** The client can specify the number of days of history to be considered.
 	 *  Since computation is done here at the backend, we have to precompute a result
 	 *  for each of an allowed set of days. */
-	private static final int[] HISTORY = {1,2,3,4,5,6,7,8,9,10,15,20,25,30,35,40,45,
-	   50,75,100,125,150,175,200,250,300,350};
+	private static final int[] HISTORY = {1,2,3,4,5,6,7,8,9,10,15,20,25,30};
 	
 	/** Create a new, empty, feature store. */
 	public FeatureStore() {

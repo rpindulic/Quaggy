@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
+import core.DateTime;
 import core.ItemDB;
 import core.ItemInfo;
 import core.TPItemInfo;
@@ -45,11 +46,12 @@ public class DB {
 	
 	/** Using the item table in the DB, return an ItemDB of
 	 *  the currently known items. 
-	 *  Include history only if history flag is set to true.
+	 *  Include history only for the most recent horizonDays
+	 *  (Set horizonDays to 0 to exclude history altogether).
 	 *  
 	 *  Throws IllegalArgumentException in case of failure.
 	 */
-	public ItemDB getItemDB(boolean history) {
+	public ItemDB getItemDB(int horizonDays) {
 		System.out.println();
 		System.out.println("******************");
 		System.out.println("Loading item database...");
@@ -71,9 +73,7 @@ public class DB {
 	        	//Create the new iteminfo
 	        	ItemInfo info = new ItemInfo(idVal, attrs);
 	        	//Pull history if needed
-	        	if (history) {
-	        		info.setHistory(getHistory(idVal));
-	        	}
+	        	info.setHistory(getHistory(idVal, DateTime.daysBack(horizonDays)));
 	        	//Map from the item ID to its attributes
 	        	rval.put(idVal, info);
 	        }
@@ -87,16 +87,18 @@ public class DB {
 	}
 	
 	/** Given an item's ID, return a list of all listings
-	 * we have stored in its history.
+	 *  we have stored in its history. Will only return listings
+	 *  that occurred on or after firstDate.
 	 * 
-	 * Throws IllegalArgumentException in case of failure.
+	 *  Throws IllegalArgumentException in case of failure.
 	 */
-	public List<TPItemInfo> getHistory(int itemID) {
+	public List<TPItemInfo> getHistory(int itemID, DateTime firstDate) {
 		Statement stmt = null;
 	    try {
 	    	List<TPItemInfo> rval = new ArrayList<TPItemInfo>();
 	        stmt = conn.createStatement();
-	        stmt.execute("SELECT * FROM " + LISTINGS_TABLE + " L WHERE L.ID = " + itemID + " ORDER BY timestamp"); 
+	        stmt.execute("SELECT * FROM " + LISTINGS_TABLE + " L WHERE L.ID = " + itemID + 
+	        		" AND L.TIMESTAMP >= '" + firstDate.generateTimestamp() + "' ORDER BY timestamp"); 
 	        ResultSet rs = stmt.getResultSet();
 	        while (rs.next()) {
 	        	String timestamp = rs.getString("TIMESTAMP");
@@ -134,7 +136,17 @@ public class DB {
 	 */
 	public void saveTPSnapshot(TPSnapshot snapshot) {
 		for (int id : snapshot.validIDS()) {
-			this.addListing(snapshot.get(id));
+			try {
+				this.addListing(snapshot.get(id));
+			}
+			catch (IllegalArgumentException e) {
+				// This means that we are trying to add a duplicate entry.
+				// In this case, that means there has not been an update
+				// in this item's TP data since we last recorded it.
+				// Either we are sampling too fast, or this is an item
+				// that is no longer available for sale and so has
+				// no new updates.
+			}
 		}
 	}
 	

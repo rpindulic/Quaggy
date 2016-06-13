@@ -58,7 +58,7 @@ class HistoryDaysValidator(BasicTypeValidator):
 
     def __init__(self, fieldName, forbidNone=False):
         self.allowed_days = [1,2,3,4,5,6,7,8,9,10,15,20,25,30,35,40,45,
-            50,75,100,125,150,175,200,250,300,350];
+            50,75,100];
         super(HistoryDaysValidator, self).__init__(fieldName, forbidNone)
 
     def test(self, valueToTest):

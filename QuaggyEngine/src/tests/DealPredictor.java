@@ -18,6 +18,9 @@ import io.SpidyAPI;
  */
 public class DealPredictor {
 	
+	// The number of days of history to store.
+	private static final int HISTORY_HORIZON = 30;
+	
 	/** Runs the DealPredictor. Pulls historical data from
 	 *  DB and queries current TP snapshot from API.
 	 */
@@ -28,7 +31,7 @@ public class DealPredictor {
 		DB db = new DB();
 		API api = new SpidyAPI();
 		FilterManager prefs = new FilterManager(args[0]);
-		List<FeatureVector> matches = prefs.filterAll(db.getItemDB(true), api.snapshot());
+		List<FeatureVector> matches = prefs.filterAll(db.getItemDB(HISTORY_HORIZON), api.snapshot());
 		System.out.println();
 		for (FeatureVector fv : matches) {
 			System.out.println(fv);

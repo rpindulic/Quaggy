@@ -238,4 +238,38 @@ public class DateTime implements Comparable<DateTime>{
 		}
 		return days;
 	}
+	
+	/** Computes the DateTime precisely horizon days before now.
+	 *  Minimum result is origin DateTime.
+	 *  
+	 *  If horizon is 0, return current time.
+	 *  If horizon is negative, throws IllegalArgumentException
+	 */
+	public static DateTime daysBack(int horizon) {
+		if (horizon < 0) {
+			throw new IllegalArgumentException("daysBack : horizon must be positive");
+		}
+		if (horizon == 0) {
+			return current();
+		}
+		DateTime delta = new DateTime("0000-00-~" + horizon + " 00:00:00");
+		DateTime result = current().add(delta);
+		return max(result, ORIGIN_UTC);
+	}
+	
+	/** Returns the minimum of two DateTime objects. */
+	public static DateTime min(DateTime a, DateTime b) {
+		if (a.compareTo(b) <= 0) {
+			return a;
+		}
+		return b;
+	}
+	
+	/** Returns the maximum of two DateTime objects. */
+	public static DateTime max(DateTime a, DateTime b) {
+		if (a.compareTo(b) <= 0) {
+			return b;
+		}
+		return a;
+	}
 }
